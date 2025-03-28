@@ -15,8 +15,7 @@ export const useCustomerStore = defineStore('customer', {
     async fetchCustomers() {
       try {
         const response = await this.$http.get('/customer')
-        console.log(response.data)
-        this.data = response.data
+        this.customers = response.data
       } catch (error) {
         console.log('fetchcustomers ', error)
         if (error.message) {
@@ -29,9 +28,10 @@ export const useCustomerStore = defineStore('customer', {
     },
     async saveCustomer(body) {
       try {
-        this.$http.post('/player', body).then((response) => {
-          console.log(response)
-          this.fetchCustomers()
+        this.$http.post('/customer', body).then((response) => {
+          if (response.status === 200 || response.status === 201) {
+            this.fetchCustomers()
+          }
         })
       } catch (error) {
         console.log('saveCustomer ', error)

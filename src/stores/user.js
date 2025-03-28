@@ -14,9 +14,8 @@ export const usUserStore = defineStore('user', {
   actions: {
     async fetchUsers() {
       try {
-        const response = await this.$http.get('/user')
-        console.log(response.data)
-        this.data = response.data
+        const response = await this.$http.get('/auth/user')
+        this.users = response.data
       } catch (error) {
         console.log('fetchUsers ', error)
         if (error.message) {
@@ -29,8 +28,7 @@ export const usUserStore = defineStore('user', {
     },
     async saveUser(body) {
       try {
-        this.$http.post('/player', body).then((response) => {
-          console.log(response)
+        this.$http.post('/auth/signup', body).then((response) => {
           this.fetchUsers()
         })
       } catch (error) {

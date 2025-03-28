@@ -15,7 +15,6 @@ export const useVehicleStore = defineStore('vehicle', {
     async fetchVehicle() {
       try {
         const response = await this.$http.get('/vehicle')
-        console.log(response.data)
         this.data = response.data
       } catch (error) {
         console.log('fetcgVehicle ', error)
@@ -30,8 +29,9 @@ export const useVehicleStore = defineStore('vehicle', {
     async saveVehicle(body) {
       try {
         this.$http.post('/vehicle', body).then((response) => {
-          console.log(response)
-          this.fetcgVehicle()
+          if (response.status === 200 || response.status === 201) {
+            this.fetchVehicle()
+          }
         })
       } catch (error) {
         console.log('saveVehicle ', error)

@@ -4,7 +4,7 @@ import { notification } from 'ant-design-vue'
 export const useLoginStore = defineStore('login', {
   state: () => ({
     token: '',
-    username: 'admin',
+    username: '',
   }),
   persist: true,
   getters: {
@@ -19,9 +19,10 @@ export const useLoginStore = defineStore('login', {
     async fetchLogin(body) {
       try {
         const response = await this.$http.post('/auth/login', body)
-        this.token = response.headers.authorization
+        this.token = response.data.token
         this.username = body.nickname
-        this.$router.push('/admin/')
+        localStorage.setItem('login', this.token)
+        this.$router.push('/admin')
       } catch (error) {
         console.log('fetchLogin ', error)
         notification.open({

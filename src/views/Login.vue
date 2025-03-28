@@ -54,7 +54,6 @@ const initState = {
 const formState = reactive({ ...initState })
 
 const onFinish = (values) => {
-  console.log('Success:', values)
   var body = toRaw(formState)
   store.fetchLogin(body)
 }

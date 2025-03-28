@@ -36,10 +36,9 @@
       </a-form-item>
     </a-form>
   </a-modal>
-  
 </template>
 <script setup>
-import { computed, onMounted,ref, toRaw, reactive } from 'vue'
+import { computed, onMounted, ref, toRaw, reactive } from 'vue'
 import { useVehicleStore } from '../stores/vehicle'
 
 import i18n from '@/i18n'
@@ -76,38 +75,37 @@ const columns = [
     dataIndex: 'id',
   },
   {
-    title: t("vehicle.brand"),
+    title: t('vehicle.brand'),
     dataIndex: 'brand',
   },
   {
-    title: t("vehicle.model"),
+    title: t('vehicle.model'),
     dataIndex: 'model',
   },
   {
-    title: t("vehicle.chassis"),
+    title: t('vehicle.chassis'),
     dataIndex: 'chassis',
   },
   {
-    title: t("vehicle.color"),
+    title: t('vehicle.color'),
     dataIndex: 'color',
   },
   {
-    title: t("vehicle.year"),
+    title: t('vehicle.year'),
     dataIndex: 'year',
   },
   {
-    title: t("vehicle.plate"),
+    title: t('vehicle.plate'),
     dataIndex: 'plate',
   },
   {
-    title: t("common.Acción"),
+    title: t('common.action'),
     key: 'action',
   },
 ]
 
 const onSubmit = () => {
   var body = toRaw(formState)
-  console.log(body)
 
   onClose()
 }
@@ -122,5 +120,4 @@ const onClose = () => {
 onMounted(() => {
   store.fetchVehicle()
 })
-
 </script>

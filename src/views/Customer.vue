@@ -1,5 +1,6 @@
 <template>
   <a-list
+    style="margin-top: 1vh"
     class="w-full"
     :grid="{ gutter: 4, xs: 1, sm: 2, md: 2, lg: 3, xl: 4, xxl: 5 }"
     :data-source="getCustomers"
@@ -8,10 +9,7 @@
       <a-list-item>
         <a-card hoverable style="width: 280px">
           <template #cover>
-            <div v-if="item.picture">
-              <a-avatar :size="64" :src="item.picture">{{ letter(item) }}</a-avatar>
-            </div>
-            <div v-else>
+            <div style="display: flex; justify-content: center; margin-top: 2vh">
               <a-avatar :size="64" :style="{ backgroundColor: `${randomColor(item.id)}` }">{{
                 letter(item)
               }}</a-avatar>
@@ -20,10 +18,9 @@
           <template #actions>
             <EditOutlined @click="edit(item)" />
           </template>
-          <template #extra>
-            <p>{{ item.id }}</p>
-          </template>
-          <a-card-meta :title="`${item.name} ${item.lastname}`"> </a-card-meta>
+          <div style="display: flex; justify-content: center; margin-top: 2vh">
+            <a-card-meta :title="`${item.name} ${item.lastname}`"> </a-card-meta>
+          </div>
         </a-card>
       </a-list-item>
     </template>
@@ -77,13 +74,11 @@ const isEdit = ref(false)
 const colorCache = ref({})
 const formRef = ref()
 
-const ACTION = import.meta.env.VITE_APP_IMG_SERVER + '/fileupload'
-
 const initState = {
   id: null,
   name: '',
   lastname: '',
-  picture: '',
+  status: true,
 }
 
 const formState = reactive({ ...initState })
@@ -102,8 +97,7 @@ const onSubmit = () => {
     .validate()
     .then(() => {
       var body = toRaw(formState)
-      console.log(body)
-      storeUser.saveUser(body)
+      store.saveCustomer(body)
       onClose()
     })
     .catch((error) => {

@@ -8,22 +8,15 @@
       <a-list-item>
         <a-card hoverable style="width: 280px">
           <template #cover>
-            <div v-if="item.picture">
-              <a-avatar :size="64" :src="item.picture">{{ letter(item) }}</a-avatar>
-            </div>
-            <div v-else>
+            <div style="display: flex; justify-content: center; margin-top: 2vh">
               <a-avatar :size="64" :style="{ backgroundColor: `${randomColor(item.id)}` }">{{
                 letter(item)
               }}</a-avatar>
             </div>
           </template>
-          <template #actions>
-            <EditOutlined @click="edit(item)" />
-          </template>
-          <template #extra>
-            <p>{{ item.id }}</p>
-          </template>
-          <a-card-meta :title="`${item.name} ${item.lastname}`"> </a-card-meta>
+          <div style="display: flex; justify-content: center; margin-top: 2vh">
+            <a-card-meta :title="`${item.nickname}`"> </a-card-meta>
+          </div>
         </a-card>
       </a-list-item>
     </template>
@@ -72,7 +65,7 @@ import { usUserStore } from '../stores/user'
 import i18n from '@/i18n'
 const { t } = i18n.global
 
-const storeUser = usUserStore()
+const store = usUserStore()
 
 const openModal = ref(false)
 const isEdit = ref(false)
@@ -95,7 +88,7 @@ const rules = {
 }
 
 const getUsers = computed(() => {
-  return storeUser.getUsers
+  return store.getUsers
 })
 
 const onSubmit = () => {
@@ -103,7 +96,6 @@ const onSubmit = () => {
     .validate()
     .then(() => {
       var body = toRaw(formState)
-      console.log(body)
       storeUser.saveUser(body)
       onClose()
     })
@@ -132,7 +124,7 @@ const edit = (record) => {
 }
 
 const letter = (record) => {
-  return `${record.name.substr(0, 1)} ${record.lastname.substr(0, 1)}`
+  return `${record.nickname.substr(0, 1)}`
 }
 
 const labelCol = {
@@ -151,6 +143,6 @@ const randomColor = (id) => {
 }
 
 onMounted(() => {
-  storeUser.fetchUsers()
+  store.fetchUsers()
 })
 </script>

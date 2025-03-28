@@ -5,6 +5,11 @@
     "vehicle": "Vehiculos",
     "logout": "Cerrar sesión"
   },
+  "login": {
+    "username": "Nombre usuario",
+    "password": "Contraseña",
+    "enter": "Iniciar sesión"
+  },
   "user": {
     "create": "Crear usuario",
     "edit": "Editar usuario"

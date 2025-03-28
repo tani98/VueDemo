@@ -1,0 +1,57 @@
+{
+  "admin": {
+    "users": "Usuarios",
+    "persons": "Clientes",
+    "vehicle": "Vehiculos",
+    "logout": "Cerrar sesión"
+  },
+  "user": {
+    "create": "Crear usuario",
+    "edit": "Editar usuario"
+  },
+  "customer": {
+    "create": "Crear cliente",
+    "edit": "Editar cliente"
+  },
+  "vehicle": {
+    "create": "Crear vehículo",
+    "edit": "Editar vehículo",
+    "brand": "Marca",
+    "model": "Modelo",
+    "chassis": "Chasis",
+    "color": "Color",
+    "year": "Año",
+    "plate": "Placa"
+  },
+  "common": {
+    "name": "Nombre",
+    "lastname": "Apellido",
+    "email": "Correo",
+    "create": "Crear",
+    "update": "Actualizar",
+    "cancel": "Cancelar",
+    "please_select": "Favor seleccionar",
+    "upload_img": "Subir imagen",
+    "pic": "Imagen",
+    "add": "Agregar",
+    "yes": "Si",
+    "no": "No",
+    "action": "Acción"
+  },
+  "required": {
+    "title": "El título es requerido",
+    "monitor": "El monitor es requerido",
+    "name": "El nombre es requerido",
+    "email": "El correo es requerido",
+    "lastname": "El apellido es requerido",
+    "player_name": "El nombre del jugador es requerido",
+    "player1_name": "El nombre del jugador 1 es requerido",
+    "player2_name": "El nombre del jugador 2 es requerido",
+    "format": "Formato requerido",
+    "username": "Usuario requerido",
+    "password": "Contraseña requerida",
+    "court": "La cancha es requerida",
+    "game": "El partido es requerido",
+    "time": "El tiempo es requerido"
+  }
+}
